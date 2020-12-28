@@ -12,6 +12,50 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <div class="container">
+        <div class="align-items-center">
+          <div class="unauthenticated">
+            <h1 id="tic-title" class="text-center">Tic Tac Toe</h1>
+            <div class="row">
+              <div class="col-12 col-md-12 col-lg-6">
+                <div class="mx-auto max500">
+                  <div class="section-title">Sign In</div>
+                  <div class="box">
+                    <form id="sign-in">
+                      <div class="form-group">
+                        <input type="email" class="form-control" id="signInEmail" placeholder="Email">
+                      </div>
+                      <div class="form-group">
+                        <input type="password" class="form-control" id="signInPassword" placeholder="Password">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Sign In</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-12 col-lg-6">
+                <div class="mx-auto max500">
+                  <div class="section-title">Sign Up</div>
+                  <div class="box">
+                    <form id="sign-up">
+                      <div class="form-group">
+                        <input type="email" class="form-control" id="signUpEmail" placeholder="Email">
+                      </div>
+                      <div class="form-group">
+                        <input type="password" class="form-control" id="signUpPassword" placeholder="Password">
+                      </div>
+                      <div class="form-group">
+                        <input type="password" class="form-control" id="signUpConfirmPassword" placeholder="Confirm Password">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="authenticated"></div>
+        </div>
+      </div>
     </body>
 </html>
