@@ -1,3 +1,8 @@
+/*
+TODO:
+- Disable form submits while waiting for a response
+*/
+
 const url = 'https://tic-tac-toe-api-development.herokuapp.com'
 
 const signUp = (credentials) => {
@@ -8,6 +13,15 @@ const signUp = (credentials) => {
   })
 }
 
+const signIn = (credentials) => {
+  return $.ajax({
+    url: url + '/sign-in',
+    type: 'post',
+    data: credentials
+  })
+}
+
 module.exports = {
-  signUp
+  signUp,
+  signIn
 }

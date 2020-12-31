@@ -12,12 +12,52 @@ body {
   font-family: Roboto, sans-serif;
 }
 
+table#game-table {
+  border-collapse: collapse;
+  width: 100%;
+
+  td {
+    border: 1px solid #ccc;
+    width: 33.333333%;
+    padding-bottom: 33.333333%;
+    display: inline-block;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  tr {
+
+    td:nth-child(1) {
+      border-left: none;
+    }
+
+    td:nth-child(3) {
+      border-right: none;
+    }
+
+    &:nth-child(1) {
+      td {
+        border-top: none;
+      }
+    }
+
+    &:nth-child(3) {
+      td {
+        border-bottom: none
+      }
+    }
+
+  }
+}
+
 .container {
   height: 100%;
   width: 100%;
 }
 
-.authenticated {
+.authenticated, .settings, .nav-link-authenticated {
   display: none;
 }
 
@@ -25,26 +65,52 @@ body {
 	background-color: #fff;
   border: 1px solid #e0e0e0;
 	border-radius: 3px;
-	max-width: 500px;
 	padding: 25px;
 
 }
 
-.max500 {
-  max-width: 500px;
+.section-title {
+  margin-bottom: .25rem;
 }
 
-#tic-title {
-  font-size: 64px;
-  margin: 40px 0;
+.section-title-spacer {
+  @extend .section-title;
+  height: 24px;
+}
+
+.main-content {
+  margin-top: 50px;
+}
+
+#navbar-links {
+  justify-content: flex-end;
 }
 
 /* Media Queries */
-
 @media (max-width: 992px) {
-
-  [class*="col-"] {
-      margin-bottom: 15px;
+  nav {
+    padding: 0 15px;
   }
 
+  table td {
+    height: 100px;
+    min-height: 100px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .navbar-expand-lg > .container {
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 575px) {
+  table td {
+    height: 75px;
+    min-height: 75px;
+  }
+
+  .navbar-expand-lg > .container {
+    padding: 0
+  }
 }

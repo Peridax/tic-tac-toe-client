@@ -28,7 +28,11 @@ const signUp = (error, credentials) => {
 }
 
 const signIn = (error, credentials) => {
-  console.log(error, credentials)
+  if (error.status === 401) {
+    ui.alert('Email or password is incorrect', 'danger', false)
+  } else {
+    ui.alert('Error status: ' + error.status, 'danger', false)
+  }
 }
 
 module.exports = {

@@ -8,10 +8,10 @@ const signUp = (event) => {
   event.preventDefault()
 
   const credentials = getFormFields(event.target)
-  event.target.reset()
 
   api.signUp(credentials)
     .then(ui.onSignUp)
+    .then(() => { event.target.reset() })
     .catch((error) => errorHandler.signUp(error, credentials))
 }
 
@@ -19,14 +19,25 @@ const signIn = (event) => {
   event.preventDefault()
 
   const credentials = getFormFields(event.target)
-  event.target.reset()
 
   api.signIn(credentials)
     .then(ui.onSignIn)
-    .catch((error) => error.Handler.signIn(error, credentials))
+    .then(() => { event.target.reset() })
+    .catch((error) => errorHandler.signIn(error, credentials))
+    .finally(() => console.log('test'))
+}
+
+const settings = () => {
+  ui.show('settings')
+}
+
+const logout = () => {
+  console.log('Logged out')
 }
 
 module.exports = {
   signUp,
-  signIn
+  signIn,
+  settings,
+  logout
 }

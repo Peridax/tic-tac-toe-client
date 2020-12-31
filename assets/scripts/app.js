@@ -11,4 +11,6 @@ const events = require('./auth/events')
 $(() => {
   $('#sign-up').on('submit', events.signUp)
   $('#sign-in').on('submit', events.signIn)
+  $('#settings').on('click', events.settings)
+  $('#logout').on('click', events.logout)
 })
