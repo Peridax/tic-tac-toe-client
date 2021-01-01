@@ -1,16 +1,33 @@
 const store = require('./../store')
 
-const pages = ['authenticated', 'unauthenticated', 'settings']
+const pages = ['authenticated', 'unauthenticated']
+
+let globalTimeout
+
+const toggleForm = (form, state) => {
+  if (state === true) {
+    $(`#${form}`).find('button').removeClass('disabled')
+  } else {
+    $(`#${form}`).find('button').addClass('disabled')
+  }
+}
 
 const show = (page) => {
   for (const i in pages) {
     if (page === pages[i]) {
       $(`.${page}`).show()
-      console.log('showing ' + page)
     } else {
       $(`.${pages[i]}`).hide()
-      console.log('hiding ' + pages[i])
     }
+  }
+}
+
+const navUpdate = (page) => {
+  if (store.token) {
+    $('nav').find('.active').removeClass('active')
+    $(`.${page}`).addClass('active')
+  } else {
+    $('.nav-link-authenticated').hide()
   }
 }
 
@@ -19,17 +36,27 @@ const onSignUp = (data) => {
 }
 
 const onSignIn = (data) => {
-  store.email = data.user.email
-  store.token = data.user.token
+  store.user = data.user
 
   authenticated(true)
-  alert('Successfully signed into <strong>' + store.email + '</strong>', 'success', true)
+  alert('Successfully signed into <strong>' + store.user.email + '</strong>', 'success', true)
+}
+
+const onLogout = () => {
+  authenticated(false)
+  alert('Successfully signed out', 'success', false)
+  store.user = null
+}
+
+const onChangePassword = () => {
+  alert('Successfully changed your password', 'success', true)
 }
 
 const alert = (message, type = 'success', authenticated) => {
+  if (globalTimeout) { clearTimeout(globalTimeout) }
   authenticated ? authenticated = 'authenticated' : authenticated = 'unauthenticated'
   $('.' + authenticated + ' .alert-container').html('<div class="alert alert-' + type + ' fade show" role="alert">' + message + '</div>')
-  setTimeout(() => { $('.alert').alert('close') }, 8000) // Make alerts go away after 10 seconds
+  globalTimeout = setTimeout(() => { $('.alert').alert('close') }, 8000) // Make alerts go away after 10 seconds
 }
 
 const authenticated = (yesno) => {
@@ -46,5 +73,9 @@ module.exports = {
   onSignUp,
   onSignIn,
   show,
+  toggleForm,
+  navUpdate,
+  onLogout,
+  onChangePassword,
   alert
 }
