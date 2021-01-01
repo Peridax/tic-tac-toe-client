@@ -36,8 +36,9 @@ SCHEDULE:
 - Complete the entire game aspect/logic of the application
 
 == Saturday ==
-- Create a board for game and user statistics (if possible)
-- Polish the entire application
+- Finish the landing page panel
+- Finish the instructions panel when logged in
+- Begin the README.md
 
 == Sunday ==
 - Complete all the documentation requirements
