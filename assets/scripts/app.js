@@ -66,4 +66,5 @@ $(() => {
   // Authenticated section
   $('#logout-link').on('click', events.logout)
   $('#change-password').on('submit', events.changePassword)
+  $('#new-game').on('click', events.newGame)
 })

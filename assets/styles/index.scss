@@ -16,15 +16,27 @@ table#game-table {
   border-collapse: collapse;
   width: 100%;
 
+  .x, .temp-x {
+    background-image: url(/assets/images/X.png);
+    background-size: cover;
+  }
+
+  .o, .temp-o {
+    background-image: url(/assets/images/O.png);
+    background-size: cover;
+  }
+
+  &.active-game {
+    td {
+      cursor: pointer
+    }
+  }
+
   td {
     border: 1px solid #ccc;
-    width: 33.333333%;
-    padding-bottom: 33.333333%;
+    width: (100 / 3) * 1%;
+    padding-bottom: (100 / 3) * 1%;
     display: inline-block;
-
-    &:hover {
-      cursor: pointer;
-    }
   }
 
   tr {

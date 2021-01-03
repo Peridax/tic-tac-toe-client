@@ -2,6 +2,7 @@ const store = require('./../store')
 const api = require('./api')
 const ui = require('./ui')
 const errorHandler = require('./error-handler.js')
+const game = require('./game')
 
 const getFormFields = require('./../../../lib/get-form-fields')
 
@@ -51,7 +52,7 @@ const changePassword = (event) => {
 }
 
 const home = () => {
-  if (store.token) {
+  if (store.usertoken) {
     ui.show('authenticated')
     ui.navUpdate('home-link')
   } else {
@@ -65,11 +66,18 @@ const settings = () => {
   ui.navUpdate('settings-link')
 }
 
+const newGame = () => {
+  api.newGame(store.user.token)
+    .then(game.start)
+    .catch(console.error)
+}
+
 module.exports = {
   signUp,
   signIn,
   settings,
   home,
   changePassword,
+  newGame,
   logout
 }

@@ -4,6 +4,10 @@ responses, which left me wondering why I couldn't sign up when
 in reality the user was already created. I then decided to create
 an error handler to avoid paining myself in the future with this
 or anyone else that uses this.
+
+TODO:
+- Create error handling for change password
+
 */
 
 const ui = require('./ui')

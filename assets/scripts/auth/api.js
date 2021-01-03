@@ -37,9 +37,20 @@ const logout = (token) => {
   })
 }
 
+const newGame = (token) => {
+  return $.ajax({
+    url: url + '/games',
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
+  newGame,
   logout
 }

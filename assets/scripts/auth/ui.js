@@ -46,6 +46,7 @@ const onLogout = () => {
   authenticated(false)
   alert('Successfully signed out', 'success', false)
   store.user = null
+  store.game = null
 }
 
 const onChangePassword = () => {
@@ -69,6 +70,18 @@ const authenticated = (yesno) => {
   }
 }
 
+const game = {
+  updateElements: (key) => {
+    if (key) {
+      $('#new-game').attr('disabled', true)
+      $('table').addClass('active-game')
+    } else {
+      $('#new-game').removeAttr('disabled')
+      $('table').removeClass('active-game')
+    }
+  }
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
@@ -77,5 +90,6 @@ module.exports = {
   navUpdate,
   onLogout,
   onChangePassword,
+  game,
   alert
 }
