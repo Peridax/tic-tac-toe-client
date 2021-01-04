@@ -36,5 +36,10 @@ I would have a few more features to add, but I simply cannot think of any at the
 9. I want to be able to play on my phone
 
 ### Images
+What I planned on designing it like:
 ![Screenshot 1](https://i.imgur.com/2PSek5x.png)
 ![Screenshot 2](https://i.imgur.com/OF1pZoL.png)
+
+How I actually designed it:
+![Screenshot 1](https://i.imgur.com/nC7uavv.png)
+![Screenshot 2](https://i.imgur.com/loRm11H.png)
