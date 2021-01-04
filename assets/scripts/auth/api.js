@@ -1,4 +1,5 @@
-const url = 'https://tic-tac-toe-api-development.herokuapp.com'
+const config = require('./../config')
+const url = config.apiUrl
 
 const signUp = (credentials) => {
   return $.ajax({
