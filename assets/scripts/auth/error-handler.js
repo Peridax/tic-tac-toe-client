@@ -5,9 +5,6 @@ in reality the user was already created. I then decided to create
 an error handler to avoid paining myself in the future with this
 or anyone else that uses this.
 
-TODO:
-- Create error handling for change password
-
 */
 
 const ui = require('./ui')
@@ -39,7 +36,17 @@ const signIn = (error, credentials) => {
   }
 }
 
+const changePassword = (error) => {
+  if (error.status === 422) {
+    ui.alert('The password you entered is incorrect', 'danger', true)
+  } else {
+    ui.alert('There was a problem changing your password', 'danger', true)
+    console.log(error)
+  }
+}
+
 module.exports = {
   signUp,
-  signIn
+  signIn,
+  changePassword
 }

@@ -5,13 +5,18 @@ const ui = require('./ui')
 let cells, turn, winner, winningCells, won, tie, waitRequest
 
 const start = (data) => {
+  won = false
+  tie = false
+
   store.game = data.game
   cells = new Array(9)
   turn = 'x'
 
   ui.game.updateElements(true)
   ui.game.resetBoard()
+
   gameEventListener(true)
+  gameUpdateText(true)
 
   ui.game.updateGameCount(++store.gamesPlayed)
 }
@@ -50,6 +55,7 @@ const gameUserClick = (data) => {
 
       if (!won) {
         turn === 'x' ? turn = 'o' : turn = 'x'
+        gameUpdateText(true)
       }
     } else {
       console.log('can\'t place here!')
@@ -100,22 +106,31 @@ const gameCheckWon = (index, value) => {
 const gameEnd = () => {
   ui.game.updateElements(false)
   gameEventListener(false)
-
-  if (won) {
-    console.log(winner + ' won!')
-  } else if (tie) {
-    console.log('tie!')
-  }
+  gameUpdateText(true)
 }
 
 const gameCount = (data) => {
   store.gamesPlayed = data.games.length
-  console.log(store.gamesPlayed)
   ui.game.updateGameCount(store.gamesPlayed)
+}
+
+const gameUpdateText = (key) => {
+  if (key) {
+    if (!won && !tie) {
+      $('#game-updates').text('Turn: ' + turn)
+    } else if (won) {
+      $('#game-updates').text('Player ' + winner + ' won!')
+    } else if (tie) {
+      $('#game-updates').text('The players have tied!')
+    }
+  } else {
+    $('#game-updates').html('')
+  }
 }
 
 module.exports = {
   start,
   gameCount,
-  gameEnd
+  gameEnd,
+  gameUpdateText
 }

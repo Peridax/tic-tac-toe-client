@@ -40,6 +40,7 @@ const logout = () => {
     .then(ui.onLogout)
     .then(game.gameEnd)
     .then(ui.game.resetBoard)
+    .then(() => game.gameUpdateText(false))
     .catch(console.error)
 }
 
@@ -52,7 +53,7 @@ const changePassword = (event) => {
   api.changePassword(credentials, store.user.token)
     .then(() => { ui.onChangePassword(event.target) })
     .then(() => { event.target.reset() })
-    .catch(console.error)
+    .catch(errorHandler.changePassword)
     .then(() => { ui.toggleForm('change-password', true) })
 }
 
