@@ -7,7 +7,7 @@
     "content": "CC­BY­NC­SA 4.0"
   },
   "scripts": {
-    "start": "grunt serve"
+    "start": "node index"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
