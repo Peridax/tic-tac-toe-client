@@ -26,6 +26,9 @@ const signIn = (event) => {
   const credentials = getFormFields(event.target)
 
   api.signIn(credentials)
+    .then(data => { store.user = data.user; return data })
+    .then(data => api.getGames(data.user.token))
+    .then(game.gameCount)
     .then(ui.onSignIn)
     .then(() => { event.target.reset() })
     .catch((error) => errorHandler.signIn(error, credentials))
@@ -35,6 +38,8 @@ const signIn = (event) => {
 const logout = () => {
   api.logout(store.user.token)
     .then(ui.onLogout)
+    .then(game.gameEnd)
+    .then(ui.game.resetBoard)
     .catch(console.error)
 }
 

@@ -35,9 +35,7 @@ const onSignUp = (data) => {
   alert('Successfully created your account!', 'success', false)
 }
 
-const onSignIn = (data) => {
-  store.user = data.user
-
+const onSignIn = () => {
   authenticated(true)
   alert('Successfully signed into <strong>' + store.user.email + '</strong>', 'success', true)
 }
@@ -79,6 +77,12 @@ const game = {
       $('#new-game').removeAttr('disabled')
       $('table').removeClass('active-game')
     }
+  },
+  resetBoard: () => {
+    $('table td').removeClass('x o temp-x temp-o')
+  },
+  updateGameCount: (number) => {
+    $('#games-played').text(number)
   }
 }
 

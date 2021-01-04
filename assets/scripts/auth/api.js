@@ -47,10 +47,33 @@ const newGame = (token) => {
   })
 }
 
+const updateGame = (token, id, game) => {
+  return $.ajax({
+    url: url + '/games/' + id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Bearer ' + token
+    },
+    data: game
+  })
+}
+
+const getGames = (token) => {
+  return $.ajax({
+    url: url + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
   newGame,
+  updateGame,
+  getGames,
   logout
 }
